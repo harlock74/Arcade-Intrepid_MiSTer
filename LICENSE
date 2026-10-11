@@ -1,0 +1,40 @@
+# Scoped project-owner licence grant
+
+The project owner has selected the **GNU General Public License, version 3 or (at your option) any later version**
+(`GPL-3.0-or-later`) for copyrightable Intrepid contributions that the owner
+controls. The complete GPL version 3 text is provided in
+`LICENSES/GPL-3.0.txt`.
+
+This grant covers, only to the extent the owner holds copyright in the
+particular expression:
+
+- the original Intrepid machine, video, audio, Pause and Autosave Hiscores
+  implementation under `rtl/intrepid/`, `rtl/pause/` and `rtl/hiscore/`;
+- original project tests, scripts, tools, contracts and documentation;
+- project-authored portions of `Arcade-Intrepid.sv` and the project
+  configuration files; and
+- the documented `INTREPID_HS_DIAG` observer added to `sys/hps_io.sv`.
+
+This is not a claim to own or relicense an inherited or mixed-provenance file
+as a whole. Template_MiSTer framework code, TV80, Intel/Altera generated IP,
+MAME reference material, original licence texts and every other third-party
+component retain their original terms and notices. Owner-controlled edits to
+an inherited file receive this owner grant only for those edits; inherited
+portions remain under their upstream terms.
+
+In particular:
+
+- framework files with explicit GPL-2.0-or-later, GPL-3.0-or-later,
+  LGPL-3.0-or-later, TEMLIB or other notices retain those terms;
+- TV80 retains the Guy Hutchison permission notice and Daniel Wallner credit;
+- Intel/Altera PLL and reconfiguration material remains under the Quartus 17
+  terms described in `NOTICE.md`; and
+- no game ROM, PROM or NVRAM payload is licensed or distributed here.
+
+See `NOTICE.md`, `docs/THIRD_PARTY_SOURCES.md` and retained source headers
+for component attribution. The additional full GPL/LGPL texts in `LICENSES/` are reference
+texts required by shipped third-party notices; their presence does not apply
+those licences to unrelated files.
+
+Owner-authorized grant update, 2026-10-11: GPL-3.0-or-later for original
+owner-controlled Intrepid contributions only. Third-party grants remain unchanged.

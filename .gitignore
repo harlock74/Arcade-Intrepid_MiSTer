@@ -1,0 +1,47 @@
+# Quartus generated output
+db/
+incremental_db/
+output_files/
+greybox_tmp/
+simulation/
+*.qws
+*.smsg
+*.rpt
+*.summary
+*.done
+*.jdi
+*.pin
+*.sof
+*.pof
+*.cdf
+*.qdf
+*.qar
+*.qarlog
+build_id.v
+
+# Local ROM/NVRAM material
+ROM/
+roms/
+*.nvm
+config/nvram/
+
+# Simulation and tool caches
+obj_dir/
+__pycache__/
+*.pyc
+*.vcd
+*.fst
+*.log
+
+# Local/experimental packages
+build/
+experimental/
+probes/
+*.zip
+
+# OS and editors
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~

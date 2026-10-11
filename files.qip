@@ -1,0 +1,59 @@
+set_global_assignment -name SYSTEMVERILOG_FILE Arcade-Intrepid.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_shell.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_download.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/reset_release.sv
+set_global_assignment -name SDC_FILE constraints/intrepid.sdc
+
+# Stage D main machine; inherited platform remains unchanged.
+set_global_assignment -name VERILOG_MACRO "TV80_REFRESH=1"
+set_global_assignment -name VERILOG_FILE rtl/tv80/tv80e.v
+set_global_assignment -name VERILOG_FILE rtl/tv80/tv80_core.v
+set_global_assignment -name VERILOG_FILE rtl/tv80/tv80_alu.v
+set_global_assignment -name VERILOG_FILE rtl/tv80/tv80_mcode.v
+set_global_assignment -name VERILOG_FILE rtl/tv80/tv80_reg.v
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_clock_enables.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_main_decode.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_program_store.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_main_ram.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_main_bus.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_machine.sv
+
+# Stage E diagnostic raster and native MiSTer video wrapper.
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_raster.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_video.sv
+
+# Stage F normal tile layer; unchanged Stage E timing and native cleaner.
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_background.sv
+
+# Stage G scroll read scheduling and independently proven coordinates.
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_scroll_coordinates.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_scroll.sv
+
+# Stage H sprite mapping and bounded line renderer.
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_sprite_pixel.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_sprites.sv
+
+# Stage I final MAME functional composition.
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_composition.sv
+
+# Stage J owned board audio; unchanged TV80 primitive reused.
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_ay8910.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_sound_clocks.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_sound_bus.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_sound_mixer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_sound.sv
+
+# Stage K board input/DIP and presentation adapters.
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_inputs.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/intrepid/intrepid_presentation.sv
+
+# Selectable Pause controller and production-safe machine boundaries.
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/pause/intrepid_pause_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/pause/intrepid_pause_safe_boundary.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/pause/intrepid_pause_machine_control.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/pause/intrepid_pause_hiscore_arbiter.sv
+# Hiscore Stage C live RAM integration; no final MRA/menu presentation.
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/hiscore/intrepid_hiscore_manager.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/hiscore/intrepid_hiscore_map.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/hiscore/intrepid_hiscore_transport.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/hiscore/intrepid_hiscore_witness.sv
