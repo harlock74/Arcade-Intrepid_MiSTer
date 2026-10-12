@@ -1,47 +1,11 @@
-# Quartus generated output
-db/
-incremental_db/
-output_files/
-greybox_tmp/
-simulation/
+# Generated Quartus output (source, IP and releases remain tracked).
+/db/
+/incremental_db/
+/output_files/
+/greybox_tmp/
+/hc_output/
+/.qsys_edit/
+/hps_isw_handoff/
 *.qws
-*.smsg
-*.rpt
-*.summary
-*.done
-*.jdi
-*.pin
-*.sof
-*.pof
-*.cdf
-*.qdf
-*.qar
-*.qarlog
-build_id.v
-
-# Local ROM/NVRAM material
-ROM/
-roms/
-*.nvm
-config/nvram/
-
-# Simulation and tool caches
-obj_dir/
-__pycache__/
-*.pyc
-*.vcd
-*.fst
-*.log
-
-# Local/experimental packages
-build/
-experimental/
-probes/
-*.zip
-
-# OS and editors
+._*
 .DS_Store
-.idea/
-.vscode/
-*.swp
-*~
