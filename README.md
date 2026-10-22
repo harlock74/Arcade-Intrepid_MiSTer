@@ -8,6 +8,12 @@ Current status: functional behavioural implementation, mainly based on MAME/refe
 
 The core supports native game timing, portrait screen orientation, background scrolling, sprites, sound, controls and high-score persistence.
 
+## How this core was developed
+
+This core was developed with the help of AI coding tools, which I used to write the code where my own experience fell short. Its current behaviour is largely based on MAME.
+
+I have not been able to find a manual or schematics for Intrepid, so this core is based on MAME only. If documentation turns up, I will use it to bring the core closer to the original hardware.
+
 ## Screenshots
 
 | | |
