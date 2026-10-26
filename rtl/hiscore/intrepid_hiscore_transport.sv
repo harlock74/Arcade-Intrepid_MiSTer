@@ -1,4 +1,4 @@
-// Isolated Hiscore Stage B. Not included by the production QSF or game wrapper.
+// Production high-score transport; included by files.qip and instantiated when ENABLE_HISCORE is enabled.
 // Two 64-byte banks: receive/capture inactive bank, validate, then atomic swap.
 // reset cancels unfinished staging; retains a published bank and in-flight upload.
 module intrepid_hiscore_transport(
