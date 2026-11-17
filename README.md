@@ -23,7 +23,7 @@ I have not been able to find a manual or schematics for Intrepid, so this core i
 
 ## Installation
 
-1. Copy `releases/Arcade-Intrepid_20261026.rbf` to `/_Arcade/cores/`, renaming it to `Intrepid_20261026.rbf`.
+1. Copy `releases/Arcade-Intrepid_20261117.rbf` to `/_Arcade/cores/`, renaming it to `Intrepid_20261117.rbf`.
 2. Copy `releases/Intrepid (set 1).mra` to `/_Arcade/`.
 3. Supply your legally obtained `intrepid.zip` in `/games/mame/` and launch the MRA.
 
@@ -103,6 +103,6 @@ The supplied release RBF is the previously tested build. A newly compiled RBF sh
 
 **Release SHA-256:**
 
-`Arcade-Intrepid_20261026.rbf`
+`Arcade-Intrepid_20261117.rbf`
 
-`61a28ba603747c15f90eaeaf32e00115f7da9a74af57dc1b2fc790c136b175d0`
+`043eaf5d4fdd83f2b3db1e5c16d5f6b90f87610e731b6b0256c08f82e8c243d4`

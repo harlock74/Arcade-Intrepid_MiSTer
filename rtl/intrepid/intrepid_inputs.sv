@@ -1,7 +1,7 @@
 // Stage K host input/DIP adapter. Pinned MAME reference: contracts/stage_k_integration.json.
 // Host joystick bits R,L,D,U,Action,Start1,Coin,Start2. Game A000 is active high
 // after MAME's input-port inversion. The accepted main bus owns the Q6 player mux.
-module intrepid_inputs #(parameter COIN_CYCLES=990000)(
+module intrepid_inputs #(parameter COIN_CYCLES=1824768)(
     input wire clk, reset,
     input wire [31:0] joystick_0, joystick_1,
     input wire [10:0] ps2_key,
@@ -38,9 +38,10 @@ module intrepid_inputs #(parameter COIN_CYCLES=990000)(
     assign player1=reset || block_game_inputs ? 8'd0 : {3'd0,p1[4:2],p1[0],p1[1]};
     assign player2=reset || block_game_inputs ? 8'd0 : {3'd0,joystick_1[4:2],joystick_1[0],joystick_1[1]};
     // Parent ROM 0138..0154 accepts a coin held 2..15 frame polls, on release.
-    // Three nominal frames = 990000 clocks: bounded press, rearm only on release.
+    // Three nominal frames = 1824768 clocks: bounded press, rearm only on release.
     // A new edge while the pulse is active is ignored, never queued or repeated.
-    reg [19:0] coin_count=0;
+    localparam COIN_WIDTH=COIN_CYCLES>0 ? $clog2(COIN_CYCLES+1) : 1;
+    reg [COIN_WIDTH-1:0] coin_count=0;
     reg coin_armed=0;
     wire coin_active=coin_count!=0;
     always @(posedge clk) begin
@@ -50,7 +51,7 @@ module intrepid_inputs #(parameter COIN_CYCLES=990000)(
             if(!shared[6]) coin_armed<=1;
             else if(coin_armed) begin
                 coin_armed<=0;
-                if(coin_count==0) coin_count<=COIN_CYCLES;
+                if(coin_count==0) coin_count<=COIN_WIDTH'(COIN_CYCLES);
             end
         end
     end

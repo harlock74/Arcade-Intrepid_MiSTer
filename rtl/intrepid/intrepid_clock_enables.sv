@@ -1,21 +1,15 @@
-// 20 MHz PLL domain. Rational enables, not clocks: 18.432 MHz master,
-// 6.144 MHz event/pixel cadence, 3.072 MHz main Z80 T-state cadence.
+// 36.864 MHz PLL domain. Enables for the 18.432 MHz master, 6.144 MHz
+// raster and 3.072 MHz main Z80; the CPU enable coincides with alternate pixels.
 module intrepid_clock_enables(
     input wire clk, reset,
     output wire master_ce, event_ce, cpu_ce
 );
-    reg [9:0] accumulator=0;
-    reg [2:0] divider=0;
-    wire [10:0] sum={1'b0,accumulator}+11'd576;
-    wire [10:0] next_sum=sum>=11'd625 ? sum-11'd625 : sum;
-    assign master_ce=!reset && sum>=11'd625;
-    assign event_ce=master_ce && (divider==0 || divider==3);
-    assign cpu_ce=master_ce && divider==0;
+    reg [3:0] phase=0;
+    assign master_ce=!reset && phase[0];
+    assign event_ce=master_ce && (phase==4'd1 || phase==4'd7);
+    assign cpu_ce=master_ce && phase==4'd1;
     always @(posedge clk) begin
-        if(reset) begin accumulator<=0;divider<=0;end
-        else begin
-            accumulator<=next_sum[9:0];
-            if(master_ce) divider<=divider==5 ? 0 : divider+1'b1;
-        end
+        if(reset || phase==4'd11) phase<=0;
+        else phase<=phase+1'b1;
     end
 endmodule

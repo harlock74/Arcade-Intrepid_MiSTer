@@ -77,7 +77,8 @@ module intrepid_hiscore_manager(
     end
     REQUEST:begin
      if(quiet)begin state<=SETTLE;idle_count<=0;end
-     else if(grant_clocks==16'd4095)begin fault<=1;state<=FAULT;end
+     // Keep the original 204.8 us grant budget, rounded up to a core clock.
+     else if(grant_clocks==16'd7549)begin fault<=1;state<=FAULT;end
     end
     SETTLE:begin
      if(!quiet)begin state<=REQUEST;idle_count<=0;end

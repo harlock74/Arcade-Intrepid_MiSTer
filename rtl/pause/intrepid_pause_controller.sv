@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 // Isolated Pause Stage B controller. Production integration is deferred.
-// All state is synchronous to the existing 20 MHz clk_sys domain.
+// All state is synchronous to the core clk_sys domain.
 module intrepid_pause_controller(
     input  wire clk,
     input  wire reset,

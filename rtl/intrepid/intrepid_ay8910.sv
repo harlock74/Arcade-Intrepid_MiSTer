@@ -1,7 +1,7 @@
 // See LICENSES/MAME-AY8910-notice.txt for reference attribution.
 // Intrepid-specific AY8910 functional model. Reference/provenance and limitations:
 // validation/stage_j/ARCHITECTURE.md. Not a generic pin-level AY replacement.
-// All state uses clk; ay_ce average 1.536 MHz on 20 MHz clk. At least 14 clk
+// All state uses clk; ay_ce is 1.536 MHz. At least 14 clk
 // cycles between stream events are required for the bounded tone pipeline.
 module intrepid_ay8910 #(
     parameter EXTERNAL_A = 0

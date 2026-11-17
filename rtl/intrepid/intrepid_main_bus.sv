@@ -1,5 +1,5 @@
 module intrepid_main_bus #(
-    parameter WATCHDOG_CYCLES=60000000, parameter HISCORE=0
+    parameter WATCHDOG_CYCLES=110592000, parameter HISCORE=0
 )(
     input wire clk, reset, phase_reset, event_ce, pause_active, watchdog_step,
     input wire [15:0] address,
@@ -45,7 +45,9 @@ module intrepid_main_bus #(
         else if(event_ce) frame_phase<=frame_phase==17'd101375 ? 17'd0 : frame_phase+1'b1;
     end
     reg watchdog_armed=0;
-    reg [25:0] watchdog_count=0;
+    localparam WATCHDOG_WIDTH=WATCHDOG_CYCLES>1 ? $clog2(WATCHDOG_CYCLES) : 1;
+    localparam [WATCHDOG_WIDTH-1:0] WATCHDOG_LAST=WATCHDOG_WIDTH'(WATCHDOG_CYCLES-1);
+    reg [WATCHDOG_WIDTH-1:0] watchdog_count=0;
     always @(posedge clk) begin
         watchdog_reset<=0;
         if(reset) begin
@@ -62,7 +64,7 @@ module intrepid_main_bus #(
             if(write_fire && watchdog_sel) sound_command<=write_data;
             if(read_fire && watchdog_sel) begin watchdog_armed<=1;watchdog_count<=0;end
             else if(watchdog_armed && watchdog_step) begin
-                if(watchdog_count==WATCHDOG_CYCLES-1) begin
+                if(watchdog_count==WATCHDOG_LAST) begin
                     watchdog_reset<=1;watchdog_armed<=0;watchdog_count<=0;
                 end else watchdog_count<=watchdog_count+1'b1;
             end

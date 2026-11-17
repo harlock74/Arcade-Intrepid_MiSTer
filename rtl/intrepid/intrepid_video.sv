@@ -1,5 +1,5 @@
 // Native Stage E diagnostic output through unchanged production MiSTer cleaner.
-// No scandoubler: accepted 20 MHz is below video_mixer's 4*6.144 MHz requirement.
+// Native scan timing through video_cleaner, with no scandoubler.
 module intrepid_video(
     input wire clk, reset, event_ce,
     input wire [7:0] red, green, blue,
