@@ -1,9 +1,9 @@
+// Status bit 4 formerly selected Analog Output and is now ignored.
 // Zero-valued status defaults map to parent MAME DSW=4f and clockwise portrait.
 localparam CONF_STR = {
     "A.INTREPID;;",
     "H0O1,Orientation,Portrait,Native;",
     "O23,Aspect Ratio,Original,Full screen,[ARC1],[ARC2];",
-    "H1O4,Analog Output,Native,Scaler;",
     "-;",
     "O9,Demo Sounds,On,Off;",
     "OA,Cabinet,Upright,Cocktail;",
